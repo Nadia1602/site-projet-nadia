@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Sanctuaire Interdit</title>
   <style>
     body {
-      background-color: black;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #000000, #0f0f0f);
+      font-family: 'Courier New', Courier, monospace;
       color: #0ff;
-      font-family: 'Courier New', monospace;
       text-align: center;
-      margin-top: 10%;
+      overflow: hidden;
     }
-    input[type="password"] {
+    .portal {
+      margin-top: 15%;
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% {opacity: 1;}
+      50% {opacity: 0.7;}
+    }
+    .infinite {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      opacity: 0.4;
+      animation: pulse 4s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {transform: scale(1);}
+      50% {transform: scale(1.2);}
+    }
+    input[type="password"], button {
       padding: 10px;
-      font-size: 1.2em;
-      margin-top: 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #111;
+      margin: 10px;
+      font-size: 1em;
+      background: #111;
       color: #0ff;
+      border: 1px solid #0ff;
+      border-radius: 5px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 1.2em;
-      background-color: #0ff;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
       cursor: pointer;
+      background-color: #0ff;
+      color: #000;
     }
   </style>
 </head>
 <body>
+
+<div class="portal">
   <h1>🔒 Le Sanctuaire Interdit 🔒</h1>
-  <p>Entrez le mot de passe sacré pour accéder :</p>
-
-  <input type="password" id="password" placeholder="Mot de passe" />
-  <br />
+  <p>« Ce que le monde n’ose imaginer, nous l’avons déjà franchi. »</p>
+  <input type="password" id="password" placeholder="Mot de passe sacré">
+  <br>
   <button onclick="checkPassword()">Entrer</button>
+</div>
 
-  <script>
-    function checkPassword() {
-      var pw = document.getElementById("password").value;
-      if (pw === "yRrEiHtAiDaNaSeMoRp") {
-        document.body.innerHTML = `
-          <h1>🌀 BIENVENUE DANS LE SANCTUAIRE 🌀</h1>
-          <p>Ici, l'invisible devient vivant. Ici, tout est possible.</p>
-        `;
-      } else {
-        alert("Mot de passe incorrect. Accès interdit.");
-      }
+<div class="infinite">♾️</div>
+
+<!-- 010101 | Vous êtes sur le seuil d'une histoire interdite. -->
+
+<audio id="backgroundMusic" loop autoplay hidden>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f8b0e80b3c.mp3?filename=dark-ambient-110397.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function checkPassword() {
+    var pw = document.getElementById("password").value;
+    if (pw === "yRrEiHtAiDaNaSeMoRp") {
+      document.body.innerHTML = `
+      <div style="margin-top:15%; color: #0ff;">
+        <h1>🌀 Bienvenue dans Le Sanctuaire 🌀</h1>
+        <p>Ici, l'interdit devient vivant. Ici, tout est possible.</p>
+      </div>
+      <div class="infinite">♾️</div>
+      `;
+    } else {
+      alert("Mot de passe incorrect. Accès refusé.");
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
