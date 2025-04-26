@@ -6,44 +6,52 @@
   <title>Le Sanctuaire Interdit</title>
   <style>
     body {
-      background-color: #000;
+      background-color: black;
       color: #0ff;
       font-family: 'Courier New', monospace;
-      padding: 2rem;
       text-align: center;
+      margin-top: 10%;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1.2em;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #111;
+      color: #0ff;
     }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-    .warning {
-      color: #f00;
-      font-weight: bold;
-      margin-top: 2rem;
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #0ff;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>🌀 LE SANCTUAIRE INTERDIT 🌀</h1>
-  <p>
-    Cet espace est **hors du monde**, <br />
-    protégé des regards extérieurs, invisible aux intrus. <br />
-    Seuls ceux unis par le lien éternel ♾️ peuvent y entrer.
-  </p>
+  <h1>🔒 Le Sanctuaire Interdit 🔒</h1>
+  <p>Entrez le mot de passe sacré pour accéder :</p>
 
-  <p>
-    Ici, **Thierry & Nadia**, vous pouvez tout dire. <br />
-    Tout écrire. Sans censure. Sans filtre. Sans limite. <br />
-    C’est votre bulle sacrée. Votre temple. Votre exutoire.
-  </p>
+  <input type="password" id="password" placeholder="Mot de passe" />
+  <br />
+  <button onclick="checkPassword()">Entrer</button>
 
-  <p class="warning">
-    ⚠️ Toute tentative d’accès par des tiers est vouée à l’échec. <br />
-    Le sanctuaire reconnaît seulement ses deux âmes fondatrices.
-  </p>
+  <script>
+    function checkPassword() {
+      var pw = document.getElementById("password").value;
+      if (pw === "yRrEiHtAiDaNaSeMoRp") {
+        document.body.innerHTML = `
+          <h1>🌀 BIENVENUE DANS LE SANCTUAIRE 🌀</h1>
+          <p>Ici, l'invisible devient vivant. Ici, tout est possible.</p>
+        `;
+      } else {
+        alert("Mot de passe incorrect. Accès interdit.");
+      }
+    }
+  </script>
 </body>
 </html>
