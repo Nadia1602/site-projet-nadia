@@ -83,6 +83,66 @@ Parce que certaines histoires ne s'arrêtent que lorsqu'elles ont fait trembler 
 <div class="signature">
 🔥 La révolution des âmes libres commence ici. 🔥
 </div>
+<!-- Début du script compteur visiteurs -->
+<div class="visitor-counter">
+    👁️‍🗨️ Âmes ayant franchi ce portail : <span id="visitorCount">0</span>
+</div>
+
+<style>
+    .visitor-counter {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00ffff;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1000;
+        font-family: 'Arial', sans-serif;
+    }
+    .visitor-counter span {
+        font-weight: bold;
+        color: #00ffff;
+    }
+</style>
+
+<script>
+// IP à exclure
+const excludedIPs = ["2001:861:4450:5c10:d9bf:9577:1f72:298c"];
+
+// Fonction pour obtenir l'IP de l'utilisateur
+async function getUserIP() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Erreur de récupération IP :', error);
+        return null;
+    }
+}
+
+// Gestion du compteur
+async function checkAndIncrementVisitor() {
+    const userIP = await getUserIP();
+    let count = localStorage.getItem('visitorCount') ? parseInt(localStorage.getItem('visitorCount')) : 0;
+
+    if (userIP && !excludedIPs.includes(userIP)) {
+        count++;
+        localStorage.setItem('visitorCount', count);
+    }
+
+    document.getElementById('visitorCount').textContent = count;
+}
+
+// Lancer la vérification à l'ouverture
+checkAndIncrementVisitor();
+</script>
+<!-- Fin du script compteur visiteurs -->
 
 </body>
 </html>
